@@ -9,9 +9,7 @@ jobs:
     - "8"
     os: linux
     jdk: oraclejdk8
-    sudo: required
-    services:
-    - docker
+    sudo: false
     before_install:
     - echo "Before Running TEST"
     install:
@@ -23,9 +21,7 @@ jobs:
     language: android
     os: linux
     jdk: oraclejdk8
-    sudo: required
-    services:
-    - docker
+    sudo: false
     before_install:
     - echo "Before Running ANDROID"
     install:
@@ -37,9 +33,7 @@ jobs:
     language: objective-c
     os: osx
     osx_image: xcode9
-    sudo: required
-    services:
-    - docker
+    sudo: false
     before_install:
     - echo "Before Running IOS"
     install:
