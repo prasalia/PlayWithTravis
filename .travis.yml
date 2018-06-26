@@ -1,0 +1,44 @@
+branches:
+  only:
+  - master
+jobs:
+  include:
+  - stage: Unit Tests
+    language: node_js
+    node_js:
+    - "8"
+    os: linux
+    jdk: oraclejdk8
+    sudo: required
+    before_install:
+    - echo "Before Running TEST"
+    install:
+    - echo $TRAVIS_BRANCH
+    - echo $TRAVIS_BUILD_NUMBER
+    script:
+    - echo "Running TEST"
+  - stage: build
+    language: android
+    os: linux
+    jdk: oraclejdk8
+    sudo: required
+    node_js: false
+    before_install:
+    - echo "Before Running ANDROID"
+    install:
+    - echo $TRAVIS_BRANCH
+    - echo $TRAVIS_BUILD_NUMBER
+    script:
+    - echo "Running ANDROID"
+  - stage: build
+    language: objective-c
+    os: osx
+    osx_image: xcode9
+    node_js: false
+    before_install:
+    - echo "Before Running IOS"
+    install:
+    - echo $TRAVIS_BRANCH
+    - echo $TRAVIS_BUILD_NUMBER
+    script:
+    - echo "Running IOS"
