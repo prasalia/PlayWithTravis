@@ -32,6 +32,8 @@ jobs:
     - echo $TRAVIS_BRANCH
     - echo $TRAVIS_BUILD_NUMBER
     script:
+    - chmod +x scripts/test.sh
+    - "./scripts/test.sh"
     - echo "Running ANDROID"
   - stage: build
     language: objective-c
