@@ -1,12 +1,3 @@
-branches:
-  only:
-  - master
-before_install:
-- echo "Common Before Install"
-install:
-- echo "Common Install"
-script:
-- echo "Common Script"
 jobs:
   include:
   - stage: Android
@@ -22,7 +13,8 @@ jobs:
     - echo "Android Install 1"
     - echo $TRAVIS_BUILD_NUMBER
     script:
-    - echo "Android Script 1"
+    - echo "1"
+    - echo "2"
   - stage: Android
     language: node_js
     node_js:
