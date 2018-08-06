@@ -11,7 +11,9 @@ jobs:
     - echo "Android Install 1"
     - echo $TRAVIS_BUILD_NUMBER
     script:
-    - echo "Android Script 1"
+    - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
+    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --format="%h - %s\n"`
+    - echo $CHANGELOG
   - stage: Android
     language: node_js
     node_js:
@@ -23,7 +25,9 @@ jobs:
     - echo "Android Install 2"
     - echo $TRAVIS_BUILD_NUMBER
     script:
-    - echo "Android Before Script 2"
+    - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
+    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --format="%h - %s\n"`
+    - echo $CHANGELOG
   - stage: Node
     language: node_js
     node_js:
@@ -38,5 +42,5 @@ jobs:
     - echo $TRAVIS_BUILD_NUMBER
     script:
     - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
-    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --format="%h - %s"`
+    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --format="%h - %s\n"`
     - echo $CHANGELOG
