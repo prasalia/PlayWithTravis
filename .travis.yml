@@ -28,7 +28,8 @@ jobs:
     - echo "Android Install 2"
     - echo $TRAVIS_BUILD_NUMBER
     script:
-    - echo "Android Before Script 2"
+    - echo "1"
+    - echo "2"
   - stage: Node
     language: node_js
     node_js:
