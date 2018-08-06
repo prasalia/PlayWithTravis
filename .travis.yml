@@ -1,3 +1,12 @@
+branches:
+  only:
+  - master
+before_install:
+- echo "Common Before Install"
+install:
+- echo "Common Install"
+script:
+- echo "Common Script"
 jobs:
   include:
   - stage: Android
@@ -11,6 +20,34 @@ jobs:
     - echo "Android Before Install 1"
     install:
     - echo "Android Install 1"
+    - echo $TRAVIS_BUILD_NUMBER
+    script:
+    - echo "Android Script 1"
+  - stage: Android
+    language: node_js
+    node_js:
+    - "8"
+    os: linux
+    jdk: oraclejdk8
+    sudo: required
+    before_install:
+    - echo "Android Before Install 2"
+    install:
+    - echo "Android Install 2"
+    - echo $TRAVIS_BUILD_NUMBER
+    script:
+    - echo "Android Before Script 2"
+  - stage: Node
+    language: node_js
+    node_js:
+    - "8"
+    os: linux
+    jdk: oraclejdk8
+    sudo: required
+    before_install:
+    - echo "Node Before Install"
+    install:
+    - echo "Node Install"
     - echo $TRAVIS_BUILD_NUMBER
     script:
     - echo "Commits in this release are as below"
