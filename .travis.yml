@@ -30,6 +30,7 @@ jobs:
     script:
     - echo "1"
     - echo "2"
+    
   - stage: Node
     language: node_js
     node_js:
@@ -43,4 +44,5 @@ jobs:
     - echo "Node Install"
     - echo $TRAVIS_BUILD_NUMBER
     script:
-    - echo "Node Before Script"
+    - echo "Commits in this release are as below"
+    - echo $TRAVIS_COMMIT_RANGE
