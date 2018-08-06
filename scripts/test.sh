@@ -1,2 +1,3 @@
 #!bin/sh
-echo "Testing permissions"
+export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s\n"`
+echo $CHANGELOG
