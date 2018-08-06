@@ -1,3 +1,3 @@
 #!bin/sh
-export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s\n"`
-echo $CHANGELOG
+export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --no-merges --pretty=format:"%h - %s%n"`
+bundle exec fastlane mytest changeText:"$CHANGELOG"
