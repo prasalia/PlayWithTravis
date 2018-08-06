@@ -7,9 +7,6 @@ jobs:
     os: linux
     jdk: oraclejdk8
     sudo: required
-    install:
-    - echo "Android Install 1"
-    - echo $TRAVIS_BUILD_NUMBER
     script:
     - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
     - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s%n"`
@@ -21,10 +18,10 @@ jobs:
     os: linux
     jdk: oraclejdk8
     sudo: required
-    install:
-    - echo "Android Install 2"
-    - echo $TRAVIS_BUILD_NUMBER
     script:
-    - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
-    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s%n"`
-    - echo $CHANGELOG
+    - if [ $TRAVIS_BRANCH == "develop" ] || [ $TRAVIS_BRANCH == "master" ] || [[ $TRAVIS_BRANCH =~ $RC_BRANCH_PATTERN ]];
+      then
+        echo "1"
+      else
+        echo "2"
+      fi
