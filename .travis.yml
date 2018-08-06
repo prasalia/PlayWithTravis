@@ -12,7 +12,7 @@ jobs:
     - echo $TRAVIS_BUILD_NUMBER
     script:
     - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
-    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --format="%h - %s\n"`
+    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s%n"`
     - echo $CHANGELOG
   - stage: Android
     language: node_js
@@ -26,5 +26,5 @@ jobs:
     - echo $TRAVIS_BUILD_NUMBER
     script:
     - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
-    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --format="%h - %s\n"`
+    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s%n"`
     - echo $CHANGELOG
