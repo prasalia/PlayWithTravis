@@ -38,4 +38,5 @@ jobs:
     - echo $TRAVIS_BUILD_NUMBER
     script:
     - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
-    - git --no-pager log $TRAVIS_COMMIT_RANGE --format="%h - %s"
+    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --format="%h - %s"`
+    
