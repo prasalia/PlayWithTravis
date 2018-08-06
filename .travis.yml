@@ -30,7 +30,8 @@ jobs:
     script:
     - echo "1"
     - echo "2"
-    
+    - echo "Commits in this release are as below"
+    - echo $TRAVIS_COMMIT_RANGE
   - stage: Node
     language: node_js
     node_js:
