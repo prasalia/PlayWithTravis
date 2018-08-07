@@ -1,9 +1,10 @@
 #!bin/sh
-export TRAVIS_BRANCH="release/v1.35"
-export RC_BRANCH_PATTERN="^\"?release\/[vV][0-9]+\.[0-9]+\"?$"
-if [ $TRAVIS_BRANCH == "develop" ] || [ $TRAVIS_BRANCH == "master" ] || [[ $TRAVIS_BRANCH =~ $RC_BRANCH_PATTERN ]];
-then
-    echo "1"
-else
-    echo "2"
+export VERSION_NUMBER="1.25"
+unset VERSION_NUMBER
+if [ -n "$VERSION_NUMBER" ]; then
+    echo "in"
+    echo $VERSION_NUMBER
+    #git tag -af v$VERSION_NUMBER-$TRAVIS_BUILD_NUMBER $TRAVIS_COMMIT -m "Release Tag created by TravisCI"
+    #git push --no-verify --delete origin v$VERSION_NUMBER-$TRAVIS_BUILD_NUMBER
+    #git push --no-verify origin v$VERSION_NUMBER-$TRAVIS_BUILD_NUMBER
 fi
