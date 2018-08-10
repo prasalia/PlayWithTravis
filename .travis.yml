@@ -2,7 +2,7 @@ branches:
   only:
   - develop
   - master
-  - /"^release.*$"/
+  - "/^(?i:release).*$/"
 
 jobs:
   include:
