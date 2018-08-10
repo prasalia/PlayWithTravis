@@ -11,6 +11,10 @@ branches:
 jobs:
   include:
   - stage: Android
+    if: branch = develop OR 
+        branch = '"develop"' OR 
+        branch = master OR
+        branch =~ /^release/[vV][0-9]+\.[0-9]+$/
     language: node_js
     node_js:
     - "8"
