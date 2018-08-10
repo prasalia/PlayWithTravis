@@ -2,7 +2,7 @@ branches:
   only:
   - develop
   - master
-  - /^"?(i:?release)/[vV][0-9]+\.[0-9]+"?$/
+  - /^(i:?release)/[vV][0-9]+\.[0-9]+$/
 
 jobs:
   include:
