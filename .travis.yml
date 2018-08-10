@@ -2,14 +2,20 @@ branches:
   only:
   - develop
   - master
-  - /^release/[vV][0-9]+\.[0-9]+$/
+  - /^epic/.*$/
   - /^fix/CNTBG-[0-9]+/.*$/
   - /^feature/CNTBG-[0-9]+/.*$/
+  - /^release/[vV][0-9]+\.[0-9]+$/
   - /^[vV][0-9]+\.[0-9]+(-trial)?$/
 
 jobs:
   include:
   - stage: Android
+    if: branch = develop OR 
+        branch = '"develop"' OR 
+        branch = master OR 
+        branch = '"master"' OR
+        branch =~ /^release/[vV][0-9]+\.[0-9]+$/
     language: node_js
     node_js:
     - "8"
