@@ -2,11 +2,11 @@ branches:
   only:
   - develop
   - master
-  - $EPIC_BRANCH_PATTERN
-  - $FIX_BRANCH_PATTERN
-  - $FEATURE_BRANCH_PATTERN
-  - $RC_BRANCH_PATTERN
-  - $TAG_PATTERN
+  - /$EPIC_BRANCH_PATTERN/
+  - /$FIX_BRANCH_PATTERN/
+  - /$FEATURE_BRANCH_PATTERN/
+  - /$RC_BRANCH_PATTERN/
+  - /$TAG_PATTERN/
 
 jobs:
   include:
