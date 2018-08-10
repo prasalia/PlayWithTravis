@@ -14,20 +14,9 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
-    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s%n"`
-    - echo $CHANGELOG
-  - stage: Android
-    language: node_js
-    node_js:
-    - "8"
-    os: linux
-    jdk: oraclejdk8
-    sudo: required
-    script:
-    - if [ $TRAVIS_BRANCH == "develop" ] || [ $TRAVIS_BRANCH == "master" ] || [[ $TRAVIS_BRANCH =~ $RC_BRANCH_PATTERN ]];
+    - if [ $TRAVIS_BRANCH == "develop" ] || [ $TRAVIS_BRANCH == "master" ] || [[ $TRAVIS_BRANCH =~ "/^(?i:release)/[vV][0-9]+\.[0-9]+$/" ]];
       then
-        echo "1";
+        echo "match";
       else
-        echo "3";
+        echo "no match";
       fi
