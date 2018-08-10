@@ -2,7 +2,10 @@ branches:
   only:
   - develop
   - master
-  - /^(?i:release)/[vV][0-9]+\.[0-9]+$/
+  - /^release/[vV][0-9]+\.[0-9]+$/
+  - /^fix/CNTBG-[0-9]+/.*$/
+  - /^feature/CNTBG-[0-9]+/.*$/
+  - /^[vV][0-9]+\.[0-9]+(-trial)?$/
 
 jobs:
   include:
@@ -14,9 +17,9 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - if [ $TRAVIS_BRANCH == "develop" ] || [ $TRAVIS_BRANCH == "master" ] || [[ $TRAVIS_BRANCH =~ "/^(?i:release)/[vV][0-9]+\.[0-9]+$/" ]];
+    - if [ $TRAVIS_BRANCH == "develop" ] || [ $TRAVIS_BRANCH == "master" ] || [[ $TRAVIS_BRANCH =~ $RC_BRANCH_PATTERN ]];
       then
-        echo "match";
+        echo "Matched $TRAVIS_BRANCH";
       else
-        echo "no match";
+        echo "Not Match $TRAVIS_BRANCH";
       fi
