@@ -4,7 +4,7 @@ jobs:
     if: branch = develop OR 
         branch = '"develop"' OR 
         branch = master OR
-        branch =~ /^(feature|fix)/CNTBG-[0-9]+/.*$/ #OR 
+        branch =~ /^(feature/CNTBG-[0-9]+/.*|fix/CNTBG-[0-9]+/.*|epic/.*|release/[vV][0-9]+\.[0-9]+)$/ #OR 
         #branch =~ /^fix/CNTBG-[0-9]+/.*$/
         #tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/
     language: node_js
