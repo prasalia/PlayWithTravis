@@ -1,7 +1,7 @@
 jobs:
   include:
   - stage: Android
-    if: (tag = true AND tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/) OR (branch = develop OR branch = '"develop"' OR branch = master OR branch =~ /^(epic/.*|feature/CNTBG-[0-9]+/.*|fix/CNTBG-[0-9]+/.*|release/[vV][0-9]+\.[0-9]+)$/) 
+    if: (tag = true) OR (branch = develop OR branch = '"develop"' OR branch = master OR branch =~ /^(epic/.*|feature/CNTBG-[0-9]+/.*|fix/CNTBG-[0-9]+/.*|release/[vV][0-9]+\.[0-9]+)$/) 
     language: node_js
     node_js:
     - "8"
@@ -9,6 +9,8 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
+    - echo $TRAVIS_BRANCH
+    - echo $TRAVIS_TAG
     - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
     - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s%n"`
     - echo $CHANGELOG
@@ -26,3 +28,5 @@ jobs:
       else
         echo "2";
       fi
+    - echo $TRAVIS_BRANCH
+    - echo $TRAVIS_TAG
