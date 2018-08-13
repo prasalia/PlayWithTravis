@@ -39,22 +39,8 @@ jobs:
     script:
     - echo "THIS IS JOB 3"
   - stage: Android
-    name: "JOB4"
-    if: (tag IS blank OR 
-        tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/) AND
-        (branch != master AND branch != '"master"')
-    language: node_js
-    node_js:
-    - "8"
-    os: linux
-    jdk: oraclejdk8
-    sudo: required
-    script:
-    - echo "THIS IS JOB 4"
-  - stage: Android
     name: "JOB5"
-    if: (tag IS present) OR 
-        (branch = develop OR branch = '"develop"' OR branch =~ /^release/[vV][0-9]+\.[0-9]+$/)
+    if: tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/
     language: node_js
     node_js:
     - "8"
