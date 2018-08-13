@@ -5,7 +5,8 @@ jobs:
         branch = '"develop"' OR 
         branch = master OR
         branch =~ /^feature/CNTBG-[0-9]+/.*$/ OR 
-        tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/
+        branch =~ /^fix/CNTBG-[0-9]+/.*$/
+        #tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/
     language: node_js
     node_js:
     - "8"
