@@ -13,7 +13,8 @@ jobs:
     - echo "THIS IS A BRANCH BUILD"
   - stage: Android
     name: "JOB2"
-    if: tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/
+    if: (tag IS blank OR tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/) AND
+        (branch != master AND branch != '"master"')
     language: node_js
     node_js:
     - "8"
@@ -22,31 +23,4 @@ jobs:
     sudo: required
     script:
     - echo "THIS IS A TAG BUILD"
-  - stage: Android
-    name: "JOB3"
-    if: tag IS blank AND 
-        branch != develop AND 
-        branch != '"develop"' AND 
-        branch != master AND 
-        branch != '"master"' AND
-        NOT branch =~ /^release/[vV][0-9]+\.[0-9]+$/
-    language: node_js
-    node_js:
-    - "8"
-    os: linux
-    jdk: oraclejdk8
-    sudo: required
-    script:
-    - echo "THIS IS JOB 3"
-  - stage: Android
-    name: "JOB5"
-    if: tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/
-    language: node_js
-    node_js:
-    - "8"
-    os: linux
-    jdk: oraclejdk8
-    sudo: required
-    script:
-    - echo "THIS IS JOB 5"
 
