@@ -1,20 +1,10 @@
-branches:
-  only:
-  - develop
-  - master
-  - $EPIC_BRANCH_PATTERN
-  - $FIX_BRANCH_PATTERN
-  - $FEATURE_BRANCH_PATTERN
-  - $RC_BRANCH_PATTERN
-  - $TAG_PATTERN
-
 jobs:
   include:
   - stage: Android
     if: branch = develop OR 
         branch = '"develop"' OR 
         branch = master OR
-        branch =~ /^release/[vV][0-9]+\.[0-9]+$/
+        branch =~ ^feature/CNTBG-[0-9]+/.*$
     language: node_js
     node_js:
     - "8"
