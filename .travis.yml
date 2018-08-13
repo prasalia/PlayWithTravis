@@ -1,7 +1,7 @@
 jobs:
   include:
   - stage: Android
-    if: branch = develop OR branch = '"develop"' OR branch = master OR branch =~ /^(epic/.*|feature/CNTBG-[0-9]+/.*|fix/CNTBG-[0-9]+/.*|release/[vV][0-9]+\.[0-9]+|[vV][0-9]+\.[0-9]+(-trial))$/
+    if: (tag IS blank) AND (branch = develop OR branch = '"develop"' OR branch = master OR branch =~ /^(epic/.*|feature/CNTBG-[0-9]+/.*|fix/CNTBG-[0-9]+/.*|release/[vV][0-9]+\.[0-9]+)$/)
     language: node_js
     node_js:
     - "8"
@@ -9,12 +9,9 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - echo $TRAVIS_BRANCH
-    - echo $TRAVIS_TAG
-    - echo "Changes in this Build - $TRAVIS_BUILD_NUMBER"
-    - export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --pretty=format:"%h - %s%n"`
-    - echo $CHANGELOG
+    - echo "THIS IS A BRANCH BUILD"
   - stage: Android
+    if: tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/
     language: node_js
     node_js:
     - "8"
@@ -22,11 +19,4 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - if [ $TRAVIS_BRANCH == "develop" ] || [ $TRAVIS_BRANCH == "master" ] || [[ $TRAVIS_BRANCH =~ $RC_BRANCH_PATTERN ]];
-      then
-        echo "1";
-      else
-        echo "2";
-      fi
-    - echo $TRAVIS_BRANCH
-    - echo $TRAVIS_TAG
+    - echo "THIS IS A TAG BUILD"
