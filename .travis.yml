@@ -40,8 +40,8 @@ jobs:
     - echo "THIS IS JOB 3"
   - stage: Android
     name: "JOB4"
-    if: tag IS blank OR 
-        tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/ OR
+    if: (tag IS blank OR 
+        tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/) AND
         (branch != master AND branch != '"master"')
     language: node_js
     node_js:
