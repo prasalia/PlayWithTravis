@@ -51,4 +51,16 @@ jobs:
     sudo: required
     script:
     - echo "THIS IS JOB 4"
+  - stage: Android
+    name: "JOB5"
+    if: (tag IS present AND tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/) OR 
+        (branch == develop AND branch == '"develop"' OR branch =~ /^release/[vV][0-9]+\.[0-9]+$/)
+    language: node_js
+    node_js:
+    - "8"
+    os: linux
+    jdk: oraclejdk8
+    sudo: required
+    script:
+    - echo "THIS IS JOB 4"
 
