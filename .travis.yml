@@ -18,6 +18,5 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - git --no-pager log -n 5 origin/master
-    - git --no-pager log MYTESTTAG..  --format="%h,%an,%cn,%cd,%s" --date=short --first-parent origin/develop
+    - echo $TRAVIS_COMMIT_RANGE
 
