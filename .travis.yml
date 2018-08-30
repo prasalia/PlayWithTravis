@@ -10,4 +10,4 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - echo "THIS IS A BRANCH BUILD"
+    - echo $MYBRANCH
