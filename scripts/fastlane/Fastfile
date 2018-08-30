@@ -1,0 +1,16 @@
+fastlane_version "1.109.0"
+
+# This value helps us track success metrics for Fastfiles
+# we automatically generate. Feel free to remove this line
+# once you get things running smoothly!
+generated_fastfile_id "d3854c5f-1445-4658-88e8-11cc2d92e833"
+
+default_platform :android
+
+
+lane :mytest do |options|
+
+    sh("touch changelog.txt")
+	File.write("changelog.txt", options[:changeText])
+
+end
