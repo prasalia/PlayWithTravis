@@ -18,5 +18,5 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - git --no-pager log MYTESTTAG..  --format="%h,%an,%cn,%cd,%s" --date=short --first-parent origin/develop
+    - git --no-pager log MYTESTTAG..  --format="%h,%an,%cn,%cd,%s" --date=short --first-parent origin/master
 
