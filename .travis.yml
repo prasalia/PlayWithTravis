@@ -22,5 +22,5 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - echo "THIS IS A TAG BUILD"
+    - git --no-pager log MYTESTTAG..  --format="%h,%an,%cn,%cd,%s" --date=short --merges --first-parent origin/develop
 
