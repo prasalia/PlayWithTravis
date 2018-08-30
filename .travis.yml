@@ -2,8 +2,6 @@ jobs:
   include:
   - stage: Android
     name: "JOB1"
-    if: (tag IS blank) AND (branch = develop OR branch = '"develop"' OR branch = master OR branch =~ /^(epic/.*|feature/CNTBG-[0-9]+/.*|fix/CNTBG-[0-9]+/.*|release/[vV][0-9]+\.[0-9]+)$/)
-    language: node_js
     node_js:
     - "8"
     os: linux
@@ -13,8 +11,6 @@ jobs:
     - echo "THIS IS A BRANCH BUILD"
   - stage: Android
     name: "JOB2"
-    if: (tag IS blank OR tag =~ /^[vV][0-9]+\.[0-9]+(-trial)?$/) AND
-        (branch != master AND branch != '"master"')
     language: node_js
     node_js:
     - "8"
