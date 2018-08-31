@@ -8,15 +8,7 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - ruby test.rb
-  - stage: Android
-    name: "JOB2"
-    language: node_js
-    node_js:
-    - "8"
-    os: linux
-    jdk: oraclejdk8
-    sudo: required
-    script:
-    - ruby test.rb
+    - echo $TRAVIS_COMMIT
+    - echo $TRAVIS_COMMIT_RANGE
+
 
