@@ -17,4 +17,5 @@ jobs:
         export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --no-merges --pretty=format:"%h - %s%n"`;
       fi
     - echo $CHANGELOG
+    - echo "DONE" 
 
