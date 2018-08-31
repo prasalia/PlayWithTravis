@@ -10,5 +10,10 @@ jobs:
     script:
     - echo $TRAVIS_COMMIT
     - echo $TRAVIS_COMMIT_RANGE
-
+    - if [ $TRAVIS_COMMIT_RANGE == "" ];
+      then
+        export CHANGELOG=`git --no-pager log -n 1 --no-merges --pretty=format:"%h - %s%n"`;
+      else
+        export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --no-merges --pretty=format:"%h - %s%n"`;
+      fi
 
