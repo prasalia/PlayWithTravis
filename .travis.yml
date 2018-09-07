@@ -15,4 +15,3 @@ jobs:
     script:
     - chmod +x scripts/yarn_cache_clean.py
     - "./scripts/yarn_cache_clean.py"
-    - echo "Praful Salian"
