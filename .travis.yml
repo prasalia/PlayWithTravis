@@ -1,9 +1,3 @@
-branches:
-  only:
-  - develop
-  - master
-  - /^.*$/
-
 jobs:
   include:
   - stage: Android
@@ -15,14 +9,6 @@ jobs:
     env:
       - secure: "QGDMsL/mKkKaSWOQJh1dmKS8zORsOoI+im5XABx1wcS79RormbGl5DgjHw5OcrpB129/rc1O/RQ6mdEvDrainn1VauBEN1XDfX0GRu1zn3OIsO+IqFNKDjZrFSA3hQKtfP/FaPKpUf5l6sJZbzD07nZtNdJTs4AiwCkk38LYAkd+ZrCNw0TLojH8HBTh+B/RcoED+6oYXeEdiRizSCCEUgf9P6Z3NIHA6lnkpTCa92/5bz8bB/nFZG6h7W6t6LbohnBlXZ6nv4DsnKcfOcInSBJBxHj1qk8weojnUBFOaN9m0FlMTfqgTclp4LXTcH4lWXSKdHIuWzdl7gDNB0sGc21TGLVXV32yvysbdOWh3bjbDNUsjglZq/zzIILqx9k8mJB6MZaFAnQdF84Pl99qE61LFyl6ALes+J6Ts598JTsjvOApNKH0Zh7W4rA8tp1baC1iMUKTjwdgVs3L9CgTNR2mIfhQejAyDHd6eNsoiFUIgbA9xPaEQy7ni30Bv6vly3hax5+FNRsej78lmTv8xKyASY2zDxkumax30vwoJhEy8VueRSYCmyBuljfpKNvE8ZW0LEaM2IBh2DN9TNxDEYDBWTnKUck3DasMiP6qozSQvo/T3KUE+WDhP4LRBx4Koq9Jk6CRDFX5c+1ToYSd0a+uRkwol0sWFJowRkKUnOA="
     sudo: required
-    before_script:
-    - echo "Inside Before Script"
-    - if [ "$TRAVIS_COMMIT_RANGE" == "" ];
-      then
-        export CHANGELOG=`git --no-pager log -n 1 --no-merges --pretty=format:"%h - %s%n"`;
-      else
-        export CHANGELOG=`git --no-pager log $TRAVIS_COMMIT_RANGE --no-merges --pretty=format:"%h - %s%n"`;
-      fi
     script:
-    - echo $SSL_UNPIN
-    - echo $CHANGELOG
+    - chmod +x scripts/yarn_cache_clean.sh
+    - "./scripts/yarn_cache_clean.sh"
