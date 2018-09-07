@@ -26,7 +26,7 @@ if __name__ == '__main__':
     if 'yarn.lock' in fileschanged:
         print 'Detected a change in yarn.lock. Cleaning existing yarn cache'
         try:
-            check_output('yarn cache clean', shell = True)
+            check_output('yarn cache clean --verbose', shell = True)
         except CalledProcessError as ex:
             print 'Error: Unable to clear Yarn cache'
             print ex.output
