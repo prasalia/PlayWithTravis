@@ -4,24 +4,34 @@ import requests
 import base64
 import os
 
-REST_URL = 'https://api.travis-ci.com'
-id = '3177861'
+if __name__ == '__main__':
 
-AUTH_HEADER = \
-    {
-        'Travis-API-Version': '3',
-        'User-Agent': 'API Explorer',
-        'Accept' : 'application/json',
-        'Content-Type' : 'application/json',
-        'Authorization' : 'token gqKQVjzU-RFzycYj-GA7DA'
-    }
+    revision = ''
+    if os.environ.get('TRAVIS_COMMIT_RANGE') and os.environ['TRAVIS_COMMIT_RANGE'] != '':
+        revision = os.environ['TRAVIS_COMMIT_RANGE'].replace('...', '..')
+    elif os.environ.get('TRAVIS_COMMIT') and os.environ['TRAVIS_COMMIT'] != '':
+        revision = '%s..^HEAD' % (os.environ['TRAVIS_COMMIT'])
 
-res = requests.get(REST_URL + '/owner/ConnectedHomes/repos?limit=10', headers = AUTH_HEADER)
-#res = requests.get(REST_URL + '/user', headers = AUTH_HEADER)
-if res.ok:
-    json_result = res.json()
-    print json.dumps(json_result,indent=4)
-else:
-    res.raise_for_status()
+    print revision
 
-/repo/3177861/builds?limit=10
+
+RAVIS_COMMIT="2b8600b"
+#TRAVIS_COMMIT_RANGE="c896cfd8f603...6da1a4e53295"
+echo $TRAVIS_COMMIT
+echo $TRAVIS_COMMIT_RANGE
+
+rev="$TRAVIS_COMMIT..HEAD^"
+
+if [ "$TRAVIS_COMMIT_RANGE" != "" ]
+then
+  rev=$TRAVIS_COMMIT_RANGE
+fi
+
+echo $rev
+
+git diff-tree --no-commit-id --name-only -r $rev
+if `git diff-tree --no-commit-id --name-only -r $rev | grep -q yarn.lock` 
+then
+    echo "running yarn cache clean"
+fi
+
