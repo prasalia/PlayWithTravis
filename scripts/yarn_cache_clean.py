@@ -13,7 +13,7 @@ if __name__ == '__main__':
     if environ.get('TRAVIS_COMMIT_RANGE') and environ['TRAVIS_COMMIT_RANGE'] != '':
         revision = environ['TRAVIS_COMMIT_RANGE'].replace('...', '..')
     elif environ.get('TRAVIS_COMMIT') and environ['TRAVIS_COMMIT'] != '':
-        revision = '%s..HEAD^' % (environ['TRAVIS_COMMIT_RANGE'])
+        revision = '%s..HEAD^' % (environ['TRAVIS_COMMIT'])
 
     cmd = 'git diff-tree --no-commit-id --name-only -r %s' % (revision)
     try:
