@@ -9,5 +9,14 @@ jobs:
     sudo: required
     script:
     - hostname
-    - ifconfig -a
-    - curl http://canhazip.com
+    - if [ $TRAVIS_BRANCH == "develop" ] && [ $TRAVIS_BRANCH == "master" ];
+      then
+        bundle exec fastlane development type:"QA";
+      else
+        if git --no-pager log -n 1 --no-merges --pretty=format:"%s" | grep -i "\[env:mock\]" && [ -z $MOCK_ENV ]
+        then
+          echo "[env:mock] found in the last commit message. Setting MOCK_ENV to true"
+          export MOCK_ENV="true"
+        fi;
+      fi
+    - echo $MOCK_ENV
