@@ -17,6 +17,6 @@ jobs:
         then
           echo "[env:mock] found in the last commit message. Setting MOCK_ENV to true"
           export MOCK_ENV="true"
-        fi;
+        fi
       fi
     - echo $MOCK_ENV
