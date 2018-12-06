@@ -10,8 +10,8 @@ jobs:
     script:
     - if [ $TRAVIS_BRANCH == "develop" ] || [[ $TRAVIS_BRANCH == "master" ]];
       then
-      echo "Generating release notes for publishing to Confluence";
-      - if [ $TRAVIS_BRANCH == "master" ];
+        echo "Generating release notes for publishing to Confluence";
+        if [ $TRAVIS_BRANCH == "master" ];
         then
           ./scripts/devops/set_automation_build_flag.py master;
         else
