@@ -8,9 +8,13 @@ jobs:
     jdk: oraclejdk8
     sudo: required
     script:
-    - if [ $TRAVIS_BRANCH == "master" ];
+    - if [ $TRAVIS_BRANCH == "develop" ] || [[ $TRAVIS_BRANCH == "master" ]];
       then
-        ./scripts/devops/set_automation_build_flag.py master
-      else
-        ./scripts/devops/set_automation_build_flag.py develop
-      fi;
+      echo "Generating release notes for publishing to Confluence";
+      - if [ $TRAVIS_BRANCH == "master" ];
+        then
+          ./scripts/devops/set_automation_build_flag.py master;
+        else
+          ./scripts/devops/set_automation_build_flag.py develop;
+        fi;
+      fi
