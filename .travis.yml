@@ -11,6 +11,7 @@ jobs:
     - if [ $TRAVIS_BRANCH == "develop" ] || [[ $TRAVIS_BRANCH == "master" ]];
       then
         echo "Generating release notes for publishing to Confluence";
+        chmod +x ./scripts/devops/set_automation_build_flag.py;
         if [ $TRAVIS_BRANCH == "master" ];
         then
           ./scripts/devops/set_automation_build_flag.py master;
