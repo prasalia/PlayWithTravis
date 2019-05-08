@@ -7,12 +7,11 @@ trigger:
     exclude:
     - '*'
 
-pool:
-  vmImage: 'ubuntu-latest'
-
 jobs:
 - job: Test job
   condition: containsValue(variables['SCENARIOS'], 'E2E ')
+  pool:
+    vmImage: 'ubuntu-latest'
   steps:
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
