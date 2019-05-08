@@ -12,7 +12,7 @@ pool:
 
 jobs:
 - job: Test job
-  condition: or(contains(variables['SCENARIOS'], 'E2E '), contains(variables['SCENARIOS'], ' E2E'), eq(variables['SCENARIOS'], 'E2E'), eq(variables['SCENARIOS'], ''))
+  condition: containsValue(variables['SCENARIOS'], 'E2E ')
   steps:
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
