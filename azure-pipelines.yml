@@ -8,7 +8,7 @@ trigger:
     - '*'
 
 jobs:
-- job: Test job
+- job: Testjob
   condition: containsValue(variables['SCENARIOS'], 'E2E ')
   pool:
     vmImage: 'ubuntu-latest'
