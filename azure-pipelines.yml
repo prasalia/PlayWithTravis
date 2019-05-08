@@ -10,7 +10,7 @@ trigger:
 jobs:
 - job: Testjob
   #condition: or(contains(variables['SCENARIOS'], 'E2E '), contains(variables['SCENARIOS'], ' E2E'), eq(variables['SCENARIOS'], 'E2E'), eq(variables['SCENARIOS'], ''))
-  condition: containsValue(variables['SCENARIOS'], 'E2E')
+  condition: containsValue(variables['SCENARIOS'].*.name, 'E2E')
   pool:
     vmImage: 'ubuntu-latest'
   steps:
