@@ -9,9 +9,16 @@ trigger:
 
 jobs:
 - job: Testjob
-  condition: containsValue(variables['SCENARIOS'], 'E2E ')
+  #condition: or(contains(variables['SCENARIOS'], 'E2E '), contains(variables['SCENARIOS'], ' E2E'), eq(variables['SCENARIOS'], 'E2E'), eq(variables['SCENARIOS'], ''))
+  condition: containsValue(variables['SCENARIOS'], 'E2E')
   pool:
     vmImage: 'ubuntu-latest'
   steps:
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
+
+
+
+#or(eq(variables['SCENARIOS'], 'E2E'), eq(variables['SCENARIOS'], ''))
+
+#contains(variables['SCENARIOS'], ' ASV '), contains(variables['SCENARIOS'], 'ASV ')
